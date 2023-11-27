@@ -8,6 +8,7 @@ int lcs (std::string& string1, std::string& string2, int len1, int len2) {
     return 0;
   }
 
+  // TODO: Should convert this to vector since we only know the size at runtime
   int lcs_table[len1+1][len2+1];
 
   string1.insert(0, "*");
