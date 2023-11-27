@@ -12,10 +12,6 @@ struct TestCase {
 
 int main () {
   TestCase test_cases[] = {
-    // {"", "", ""},
-    // {"ABCDEF", "ABCDEF", "ABCDEF"},
-    // {"ABC", "XYZ", ""},
-    // {"AABCXY", "XYZ", "XY"}
     {"", "", 0},
     {"ABCDEF", "ABCDEF", 6},
     {"ABC", "XYZ", 0},
@@ -36,6 +32,6 @@ int main () {
 
   // int result = lcs(test_case.string1, test_case.string2, test_case.string1.length(), test_case.string2.length());
 
-  // std::cout << result << "\n";
+  // std::cout << "LCS = " << result << "\n";
 
 }
