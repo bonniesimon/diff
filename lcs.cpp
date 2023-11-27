@@ -5,11 +5,23 @@
 
 void print_table(std::vector<std::vector<int>> table, std::string string1, std::string string2);
 
-int lcs (std::string& string1, std::string& string2, int len1, int len2) {
-  if (len1 == 0 && len2 == 0) {
-    return 0;
+std::string lcs_string(std::vector<std::vector<int>> lcs_table, std::string string1, std::string string2, int i, int j) {
+  if (i == 0 || j == 0) {
+    return "";
   }
 
+  if (string1[i-1] == string2[j-1]) {
+    return lcs_string(lcs_table, string1, string2, i-1, j-1) + string1[i-1];
+  }
+
+  if (lcs_table[i][j-1] > lcs_table[i-1][j-1]) {
+    return lcs_string(lcs_table, string1, string2, i, j-1);
+  }
+
+  return lcs_string(lcs_table, string1, string2, i-1, j);
+}
+
+std::vector<std::vector<int>> lcs (std::string& string1, std::string& string2, int len1, int len2) {
   std::vector<std::vector<int>> lcs_table(len1+1, std::vector<int>(len2+1, 0));
 
   for(std::size_t i=1; i<lcs_table.size(); i++) {
@@ -25,7 +37,7 @@ int lcs (std::string& string1, std::string& string2, int len1, int len2) {
   print_table(lcs_table, string1, string2);
 
 
-  return lcs_table[len1][len2];
+  return lcs_table;
 }
 
 void print_table(std::vector<std::vector<int>> table, std::string string1, std::string string2) {
